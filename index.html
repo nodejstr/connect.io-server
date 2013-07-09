@@ -1,0 +1,21 @@
+<script src="http://localhost:8080/socket.io/socket.io.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>
+	var socket = io.connect('http://localhost:8080');//server a göre deðiþtirilmesi gerekiyor
+                socket.on('connect',function(){
+                    socket.emit('listen',{listenType:'ROOM',roomName:'test'} );
+					console.log('room connected.');
+                });
+				socket.on('hello',function(data){
+					console.log(data);
+                });
+				$(function(){
+				$('#datasend').click(function(){
+						console.log("send");
+						socket.emit('socketEvent',{eventType:'SEND_TO_ROOM',roomName:'test',eventName:'hello',data:{d:1,a:2,b:'ertu'}});
+				});
+				});
+</script>
+<div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+	<input type="button" id="datasend" value="send" />
+</div>

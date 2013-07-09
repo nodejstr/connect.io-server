@@ -1,0 +1,9 @@
+{
+     "name": "connect-io",
+     "description": "node js server for easy socket",
+     "version": "0.0.1",
+     "dependencies": {
+        "express": "",
+        "socket.io": ""
+     }
+}
